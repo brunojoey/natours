@@ -1,0 +1,81 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  background-color: rgba($color-white, 0.6);
+  border-radius: $border-radius;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: $font-default-size;
+  transform: skewX(-12deg);
+
+  @include respond(tab-port) {
+    width: 100%;
+    padding: 4rem;
+    padding-left: 9rem;
+  }
+
+  @include respond(phone) {
+    transform: skewX(0);
+  }
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%; // serves as a backup to the clip-path
+    
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+      // like clip-path property with creating shapes. First number would be diameter, the others will be horizontal and vertical
+      // Shape will only work with float and defined sizes like width and height
+      // Defines where the content will shape around. Like a circle
+      clip-path: circle(50% at 50% 50%);
+      -webkit-clip-path: circle(50% at 50% 50%);
+      -webkit-shape-outside: circle(50% at 50% 50%);
+      shape-outside: circle(50% at 50% 50%); 
+      border-radius: none; 
+    }
+
+    @include respond(phone) {
+      transform: translateX(-3rem) skewX(0);
+    }
+  }
+
+  &__image {
+    height: 100%;
+    transform: translateX(-4rem) scale(1.4);
+    // backface-visibility: hidden;
+    transition: all 0.5s;
+  }
+
+  &__text {
+    transform: skewX(12deg);
+
+    @include respond(phone) {
+      transform: skewX(0);
+    }
+  }
+
+  &__caption {
+    @include position-center(absolute, 50%, 50%, translate(-50%, 0));
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0; // Initial state before hover animation
+    transition: all 0.5s;
+    backface-visibility: hidden; // To fix small movement at the end of transition
+  }
+
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -20%);
+  }
+
+  &:hover &__image {
+    transform: translateX(-4rem) scale(1);
+    filter: blur(3px) brightness(80%);
+  }
+}

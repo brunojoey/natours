@@ -1,0 +1,49 @@
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(
+      -10rem
+    ); /* translateX because we want to move it in regards horizonatally. -100 to move from the left, 100 would move from the right */
+  }
+
+  80% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(
+      10rem
+    ); /* translateX because we want to move it in regards horizonatally. -100 to move from the left */
+  }
+
+  80% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInButton {
+  0% {
+    opacity: 0;
+    transform: translateY(
+      3rem
+    ); /* translateY because we want to move it in regards vertically. -30 to move from the top */
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
