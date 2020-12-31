@@ -1115,6 +1115,7 @@ body {
     float: left;
     position: relative;
     overflow: hidden;
+    transform: translateX(-3rem) skewX(12deg);
     border-radius: 50%; }
     @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
       .story__shape {
